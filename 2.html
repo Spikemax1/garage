@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+td{
+    border: 1px solid blueviolet;
+}
+</style>
+<body>
+<table id="table"></table>
+<p>
+    <label for="">
+    Общая стоимость: 
+    <span id="resultParag"></span>
+    </label>
+</p>
+<input type="text" id="name">
+<input type="text" id="price">
+<input type="text" id="quantity">
+<button id="create">push</button>
+<script>
+var cheackSum = function(){
+    var allCount = table.getElementsByClassName('allCount');
+    var result = 0;
+    for (let index = 0; index < allCount.length; index++) {
+        result += Number(allCount[index].innerHTML);        
+        console.log(result);
+    }
+    document.getElementById('resultParag').innerHTML = result;
+};
+
+var deleteIt = function(){
+    table.removeChild(this.parentNode);
+    cheackSum();
+};
+
+var createDeleteBut = function(parent){
+    var but = document.createElement('button');
+    but.innerHTML = 'Удалить';
+    but.addEventListener('click', deleteIt);
+    parent.appendChild(but);
+};
+
+var createModify = function(){  
+    if(inp == undefined){
+        var inp = document.createElement('input');
+        inp.value = this.innerHTML;
+        inp.id = 'enable';
+        var that = this;
+        inp.addEventListener('blur', function(){
+            that.innerHTML = inp.value;
+        })
+        this.appendChild(inp); 
+    }   
+    console.log(this.parentNode); 
+    var firstElem = this.parentNode.childNodes[1];
+    var secondElem = this.parentNode.childNodes[2];
+    var thirdElem = this.parentNode.childNodes[3];
+    thirdElem.innerHTML = firstElem.innerHTML + secondElem.innerHTML;      
+   // thirdElem.className = 'allCount';
+    cheackSum();
+};
+
+var createTd = function(parent, name, clName){ 
+    if(clName != undefined){
+        var td = document.createElement('td');
+        td.className = clName;        
+        td.innerHTML = name;                
+        parent.appendChild(td);
+    }   
+    else{
+        var td = document.createElement('td');        
+        td.innerHTML = name;
+        var elem = name;
+        td.addEventListener('click', createModify);
+
+        parent.appendChild(td); 
+    }
+        
+};
+
+var createTable = function(products){
+    var name = document.getElementById('name');
+    var price = document.getElementById('price');
+    var quantity = document.getElementById('quantity');
+    var table = document.getElementById('table');    
+    var tr = document.createElement('tr');
+        createTd(tr, name.value);
+        createTd(tr, price.value);
+        createTd(tr, quantity.value);
+        createTd(tr, quantity.value * price.value,'allCount');
+        table.appendChild(tr);
+        createDeleteBut(tr);
+    cheackSum();
+     
+};
+var create = document.getElementById('create');
+create.addEventListener('click', createTable);
+
+</script>
+</body>
+</html>

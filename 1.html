@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+td {
+    border: 1px solid chocolate;
+}
+</style>
+<body>
+<div id="main"></div>
+<ul id="ul"></ul>
+<input type="text" id="newLi">
+<button id="addNewLi">AddNew</button>
+<script>
+var arr = [1,2,3,4,5];
+var ul = document.getElementById('ul');
+var main = document.getElementById('main');
+var newLi = document.getElementById('newLi');
+var addNewLi = document.getElementById('addNewLi');
+
+var deletIt = function(){    
+    var firstElem = this.parentNode.childNodes[0];
+    var secondElem = this.parentNode.childNodes[1];
+    console.log(this.parentNode);
+    if(this.parentNode.classList.contains("enable")){    
+        console.log(this.parentNode.childNodes[1].value);         
+        firstElem.innerHTML = secondElem.value;
+        this.parentNode.removeChild(secondElem);        
+        } 
+       
+};
+
+var getInp = function(){
+    if(!this.classList.contains("enable")){
+        var inp = document.createElement('input');
+        inp.value = this.innerHTML;
+        inp.id = 'newInp';
+        this.parentNode.classList.add('enable');
+        inp.addEventListener('blur', deletIt);
+        this.parentNode.appendChild(inp);         
+    }    
+};
+
+addNewLi.addEventListener('click', function(){
+    var li = document.createElement('li');
+    var span = document.createElement('span');
+        span.innerHTML = newLi.value;
+        span.id = 'sp';
+        span.addEventListener('click', getInp);
+        li.appendChild(span);
+        ul.appendChild(li);
+});
+
+</script>
+</body>
+</html>
