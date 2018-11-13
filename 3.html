@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>practise</title>
-</head>
-<style>
-    
-</style>
-<body>
-<script>
-    var shuffle = function(arr){
+  </head>
+  <style></style>
+  <body>
+    <script>
+      var shuffle = function(arr) {
+        var foundedNumber = [];
+
+        var randomNumber = function(arrElem){
+            var elem = Math.floor(Math.random() * Math.floor(arrElem.length));
+            return elem;
+        };
+
         var newArr = [];
         var oldArr = arr;
-        for (let index = 0; index < arr.length; index++) {
-            var elem = Math.floor(Math.random() * Math.floor(oldArr.length));
+        for (let index = arr.length; index > 0; index--) {    
+            var elem = randomNumber(oldArr); 
+            console.log(arr.length);    
             newArr.push(oldArr[elem]);
-            oldArr.splice(elem, 1);            
-        }   
-        
-        return newArr;  
-    };
-    var arr  = [1,2,3,4,5];
-   // arr.splice(0,1);
+            oldArr.splice(elem, 1);
+        }
 
-    console.log(shuffle(arr));
-</script>
-</body>
+        return newArr;
+      };
+      
+      // arr.splice(0,1);
 
-
+      console.log(shuffle([1, 2, 3, 4, 5]));
+    </script>
+  </body>
 </html>
