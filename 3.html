@@ -11,15 +11,21 @@
 </style>
 <body>
 <script>
-    var range = function(num1, num2){
-        var arr = [];
-        for (let index = num1; index <= num2; index++) {
-            arr.push(index);           
-        }
-        return arr;
+    var shuffle = function(arr){
+        var newArr = [];
+        var oldArr = arr;
+        for (let index = 0; index < arr.length; index++) {
+            var elem = Math.floor(Math.random() * Math.floor(oldArr.length));
+            newArr.push(oldArr[elem]);
+            oldArr.splice(elem, 1);            
+        }   
+        
+        return newArr;  
     };
+    var arr  = [1,2,3,4,5];
+   // arr.splice(0,1);
 
-    console.log(range(1, 5));
+    console.log(shuffle(arr));
 </script>
 </body>
 
