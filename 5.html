@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>paragraph</title>
+</head>
+<body>
+    <p>Lorem ipsumdslfjsdlkjflksdjfsd</p>
+    <button id="appear">appear</button>
+<script>
+    var parag = document.getElementsByTagName('p');
+    var sign = false;
+    parag[0].hidden = true;
+    console.log(parag[0].innerHTML);
+    var appear = document.getElementById('appear');
+    appear.addEventListener('click', function(){
+        if(sign === false){            
+            sign = true;
+        }
+        else{
+            sign = false;
+        }
+        parag[0].hidden = sign;
+        
+    })
+</script>
+</body>
+</html>
