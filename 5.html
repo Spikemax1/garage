@@ -7,24 +7,24 @@
     <title>paragraph</title>
 </head>
 <body>
-    <p>Lorem ipsumdslfjsdlkjflksdjfsd</p>
-    <button id="appear">appear</button>
+    <p id="first">first</p>
+    <p id="second">second</p>
+    <p id="third">third</p>
+    <input type="text" id="disappearElem">
+    <button onclick="hideElem()">appear</button>
 <script>
-    var parag = document.getElementsByTagName('p');
-    var sign = false;
-    parag[0].hidden = true;
-    console.log(parag[0].innerHTML);
-    var appear = document.getElementById('appear');
-    appear.addEventListener('click', function(){
-        if(sign === false){            
-            sign = true;
-        }
-        else{
-            sign = false;
-        }
-        parag[0].hidden = sign;
-        
-    })
+    var hideElem = function(elem){
+        elem.hidden = true;
+    };
+    var hideElem = function(){
+        var disappearElem = document.getElementById('disappearElem');
+        var idElem = disappearElem.value;
+        var selectedElem = document.getElementById(idElem);
+        selectedElem.hidden = true;
+        console.log(selectedElem);
+    }
+    
+   
 </script>
 </body>
 </html>
