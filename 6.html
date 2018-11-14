@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrayList</title>
+</head>
+<body>
+
+<script>
+    
+
+    var createLi = function(parent, name, clName){    
+        var li = document.createElement('li');       
+        li.innerHTML = name;  
+        var but = document.createElement('button');
+        but.addEventListener('click', changeValueLi);
+        but.innerHTML = 'редактировать';
+        li.appendChild(but);          
+        parent.appendChild(li);
+    };
+    var arrayInList = function(arr){
+        for (let index = 0; index < arr.length; index++) {
+            var ul = document.createElement('ul');
+            createLi(ul, arr[index].name +": " + arr[index].age + " ");
+            document.body.appendChild(ul);          
+        }
+    };
+    var changeValueLi = function(e){
+            console.log(this.previousSibling);
+            var inpName = document.createElement('input');
+            var inpAge = document.createElement('input');
+            ul.appendChild(inpAge, inpName);
+        };
+
+
+var products = [
+	{name: 'Коля', age: 30},
+	{name: 'Вася', age: 40},
+	{name: 'Петя', age: 50},
+];
+    arrayInList(products);
+</script>
+</body>
+</html>
