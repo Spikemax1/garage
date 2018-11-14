@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>createTable</title>
+<style>
+td{
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+}
+
+</style>
+</head>
+
+<body>
+    <script>
+        var createTD =function(parent, name){
+            var td = document.createElement('td');    
+            td.innerHTML = name;                
+            parent.appendChild(td);
+        };
+
+        var createTable = function(arr){
+            var table = document.createElement('table');
+            for (let index = 0; index < arr.length; index++) {
+                console.log(Array.isArray(arr[index]));
+                if(Array.isArray(arr[index])){
+                    for (let postIndex = 0; postIndex < arr[index].length; postIndex++) {
+                        var tr = document.createElement('tr');  
+                        createTD(tr, arr[index][postIndex]);
+                        table.appendChild(tr);                        
+                    }
+                }
+                else{
+                    var tr = document.createElement('tr');  
+                    createTD(tr, arr[index]);
+                    table.appendChild(tr);
+                }                
+                           
+            }
+            document.body.appendChild(table);
+        };        
+        createTable([[23,3,4,], 1,2,3,4,5]);
+    
+    </script>
+</body>
+</html>
