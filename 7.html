@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>checkbox</title>
+</head>
+<body>
+    <p id="parag">ljlfkjdslkfjkdlsjf</p>
+    <input type="checkbox" name="" id="checkInput">
+
+<script>
+var parag = document.getElementById('parag');
+var checkInput = document.getElementById('checkInput');
+
+var arr = [true, false, true, true, false, false];
+
+parag.hidden = true;
+checkInput.addEventListener('click', function(){
+    if(checkInput.checked){
+        parag.hidden = false;
+    }
+    else{
+        parag.hidden = true;
+    }
+});
+
+for (let index = 0; index < arr.length; index++) {
+    var elem = document.createElement('input');
+    elem.type = 'checkbox';
+    if(arr[index])elem.checked = true; 
+    document.body.appendChild(elem);    
+}
+
+</script>
+</body>
+</html>
