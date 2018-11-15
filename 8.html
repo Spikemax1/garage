@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>active Users</title>
+</head>
+<style>
+.red{
+    background: red;
+}
+.green{
+    background: green;
+}
+</style>
+<body>
+
+<script>
+var products = [
+	{name: 'Коля', active: true},
+	{name: 'Вася', active: true},
+	{name: 'Петя', active: false},
+];
+
+var createLi = function(parent, name, active){    
+        var li = document.createElement('li'); 
+        if(active){
+            li.classList.add('red');
+        }else{
+            li.classList.add('green');
+        }      
+        li.innerHTML = name;          
+        parent.appendChild(li);
+    };
+    var ul = document.createElement('ul'); 
+for (let index = 0; index < products.length; index++) {     
+    createLi(ul, products[index].name, products[index].active); 
+         
+}
+document.body.appendChild(ul);
+</script>
+</body>
+</html>
