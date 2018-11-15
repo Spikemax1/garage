@@ -7,17 +7,7 @@
     <title>datasetArr</title>
 </head>
 <body>
-     <div id="div">
-
-    <label for=""> How my name?
-    <input type="text"  data-right-answer = "1">
-    </label><br>
-    <label for=""> How my name?
-    <input type="text"  data-right-answer = "2">
-    </label><br>
-    <label for=""> How my name?
-    <input type="text"  data-right-answer = "3">
-    </label><br>
+     <div id="div">    
     <label for=""> How my name?
     <input type="text"  data-right-answer = "4">
     </label><br>
@@ -25,16 +15,15 @@
      </div>
 <script>
 var answerArr = [];
+
 var checkData = function(){
     var elems = document.querySelectorAll('#div input');
-    for (let index = 0; index < elems.length; index++) {
-        if(elems[index].value != ''){
-            answerArr.push(elems[index].value);
-            elems[index].value = '';
-        }
-        
-    }
-    console.log(answerArr);
+    var newArr = elems[0].value.split('');
+    var sum = 0;
+    for (let index = 0; index < newArr.length; index++) {
+        sum += Number(newArr[index]);    
+    }    
+    elems[0].outerHTML = sum;
 }
 </script>
 </body>
