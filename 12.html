@@ -8,31 +8,42 @@
 </head>
 <body>
     <span id="firstElement"></span>
-    <a href="#" onclick="previousElement()">Previous</a>
-    <a href="#" onclick="nextELement()">Next</a>
-    
+    <button onclick="previousElement()" id="previousButton">Previous</button>
+    <button onclick="nextELement()" id="nextButton">Next</button>
+       
 </body>
 <script>
 var arr = ['1111', '222', '3333', '4444'];
 var num = 0;
+var element = document.getElementById('firstElement');
+var previousButton = document.getElementById('previousButton');
+var nextButton = document.getElementById('nextButton');
 
-var nextELement = function(){
-    var element = document.getElementById('firstElement');
-    num++;
+var nextELement = function(){  
+    num++;  
     if(arr[num] == undefined){
-        num = 0;
-    }           
-    element.innerHTML = arr[num];          
-}
+        nextButton.disabled = true;
+        previousButton.disabled = false;
+    } 
+    else{
+       element.innerHTML = arr[num];  
+    }             
+     
+             
+};
 
 var previousElement = function(){
-    var element = document.getElementById('firstElement');
     num--;
     if(arr[num] == undefined){
-        num = arr.length - 1;
-    }           
-    element.innerHTML = arr[num];            
-}
+        previousButton.disabled = true;
+        nextButton.disabled = false;
+    }
+    else{
+      element.innerHTML = arr[num];   
+    } 
+              
+               
+};
 
 </script>
 
