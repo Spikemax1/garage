@@ -20,6 +20,7 @@
         li.appendChild(but);          
         parent.appendChild(li);
     };
+
     var arrayInList = function(arr){
         for (let index = 0; index < arr.length; index++) {
             var ul = document.createElement('ul');
@@ -27,11 +28,28 @@
             document.body.appendChild(ul);          
         }
     };
+    
+    var changeObj = function(){
+        console.log(this);
+        var name = this.parentNode.children[1].value;
+        var age = this.parentNode.children[2].value;
+        var but = this.parentNode.children[3];
+
+        but.addEventListener('click', createLi(this.parentNode.parentNode, name +": " + age + " "));
+        this.parentNode.parentNode.removeChild(this.parentNode);
+    };
+
     var changeValueLi = function(e){
             console.log(this.previousSibling);
             var inpName = document.createElement('input');
             var inpAge = document.createElement('input');
-            ul.appendChild(inpAge, inpName);
+            var inpBut = document.createElement('button');
+            inpBut.innerHTML = 'Изменить';
+            inpBut.addEventListener('click', changeObj);
+            this.parentNode.appendChild(inpName);
+            this.parentNode.appendChild(inpAge);
+            this.parentNode.appendChild(inpBut);
+            this.disabled = true;
         };
 
 
