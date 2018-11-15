@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>data-number</title>
+</head>
+<body>
+    <div id="div">
+
+   
+    <input type="text" data-number = "1">
+    <input type="text" data-number = "2">
+    <input type="text" data-number = "3">
+    <input type="text" data-number = "4">
+    <button onclick="checkData()">check</button>
+     </div>
+<script>
+var checkData = function(){
+    var elems = document.querySelectorAll('#div input');
+    for (let index = 0; index < elems.length; index++) {
+        if(elems[index].value == elems[index].dataset.number){
+            elems[index].style.borderColor = 'green';
+        }        
+        else{
+            elems[index].style.borderColor = 'yellow';
+        }
+    }
+}
+</script>
+
+</body>
+</html>
