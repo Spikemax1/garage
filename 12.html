@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrayOfStings</title>
+</head>
+<body>
+    <span id="firstElement">1111</span>
+    <a href="#" onclick="nextELement()">Next</a>
+</body>
+<script>
+var arr = ['sdfsdf', 'dddd', 'eeee', 'ttttt'];
+var num = 0;
+
+var nextELement = function(){
+    var element = document.getElementById('firstElement');
+    if(arr[num] == undefined){
+        element.innerHTML = 'Элементы кончились';
+    }
+    else{
+        element.innerHTML = arr[num];
+        num++; 
+    }    
+}
+
+</script>
+
+</html>
