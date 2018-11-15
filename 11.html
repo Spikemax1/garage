@@ -28,7 +28,11 @@ var answerArr = [];
 var checkData = function(){
     var elems = document.querySelectorAll('#div input');
     for (let index = 0; index < elems.length; index++) {
-        answerArr[index] = elems[index].value;
+        if(elems[index].value != ''){
+            answerArr.push(elems[index].value);
+            elems[index].value = '';
+        }
+        
     }
     console.log(answerArr);
 }
