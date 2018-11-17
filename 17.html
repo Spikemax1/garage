@@ -4,18 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>How left</title>
+    <title>day of the week</title>
+<style>
+td {
+    border: 1px solid indigo;
+}
+</style>
 </head>
-<body>
 
+<body>
+    <span id="nowMonth"></span><br>
+    <button id="preMonth"><=</button>
+    <button id="nextMonth">=></button>
+    
+    <table id="daysOfCalendar"></table>
+    
 <script>
+var nowMonth = document.getElementById('nowMonth');
+var nextMonth = document.getElementById('nextMonth');
+var preMonth = document.getElementById('preMonth');
+var daysOfCalendar = document.getElementById('daysOfCalendar');
 var date = new Date();
-var nowDay = new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0); 
-var lastDay = new Date(date.getFullYear(), date.getMonth()+1, 0); 
-console.log(lastDay.getDate());
-console.log(7 - lastDay.getDay());
-console.log(lastDay.getMonth());
+var nowDay = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+var arrMonths = [   'Январь', 'Февраль','Март', 'Апрель','Май', 'Июнь','Июль', 'Август',
+                    'Сентябрь', 'Октябрь','Ноябрь', 'Деабрь'
+                ];
+var week = [
+    'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота','Воскресенье'  
+]
+var months =  date.getMonth()+1;
+var createTd = function(father, elem){
+    var td = document.createElement('td'); 
+    if(checkDay(elem)){
+        td.style.background = 'red';
+    }
+     td.innerHTML = elem;         
+     father.appendChild(td);
+    
+}; 
+var createTr = function(grandFather, week){
+    var tr = document.createElement('tr'); 
+    if(Array.isArray(week)){
+            for (let index = 0; index < 7; index++) {
+            createTd(tr, week[index]);       
+        }
+    }
+    else{
+        for (let index = 0; index < 7; index++) {
+            createTd(tr, index);     
+        }
+    }
+    grandFather.appendChild(tr);
+};
+
+
+var checkDay = function(num){
+    var diff = lastDayThisMonth(months);
+    var diffDate = new Date(diff.getFullYear(), diff.getMonth(), num, 0,0,0);
+    return nowDay.getTime() == diffDate.getTime() ? true : false;
+};
+
+var createCalendar = function(){
+    daysOfCalendar.innerHTML = '';
+    var calendarDate = lastDayThisMonth(months);
+    var day = 1;
+    createTr(daysOfCalendar, week);
+    createTr(daysOfCalendar, calendarDate.getDate());    
+};
+var lastDayThisMonth = function(months){
+    return new Date(date.getFullYear(), months, 0, 0, 0); 
+};
+var firstDayThisMonth = function(months){
+    return new Date(date.getFullYear(), months-1, 1, 0,0,0);
+};
+console.log(firstDayThisMonth(months));
+
+var changeMonth = function(){
+    var date = lastDayThisMonth(months);   
+    nowMonth.innerHTML = arrMonths[date.getMonth()] +" " + date.getFullYear();
+};
+
+var addMonth = function(){    
+    months++;
+    changeMonth();
+    createCalendar();
+};
+
+var remMonth = function(){    
+    months--;
+    changeMonth();
+    createCalendar();
+};
+
+changeMonth();
+createCalendar();
+nextMonth.addEventListener('click', addMonth);
+preMonth.addEventListener('click', remMonth);
+
+
 </script>
-  
 </body>
 </html>
