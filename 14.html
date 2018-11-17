@@ -12,7 +12,8 @@
     </ul>
 <script>
 var ul = document.getElementById('ul');
-for (let index = 1; index < 32; index++) {
+var date = new Date(2018, 11, 0);
+for (let index = 1; index <= date.getDate(); index++) {
      var li = document.createElement('li');   
      li.innerHTML = index;
      ul.appendChild(li);
