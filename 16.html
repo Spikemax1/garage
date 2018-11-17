@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+</head>
+<body>
+    <span id="nowMonth"></span><br>
+    <button id="preMonth"><=</button>
+    <button id="nextMonth">=></button>
+    
+    <div id="daysOfCalendar"></div>
+    
+<script>
+var nowMonth = document.getElementById('nowMonth');
+var nextMonth = document.getElementById('nextMonth');
+var preMonth = document.getElementById('preMonth');
+var daysOfCalendar = document.getElementById('daysOfCalendar');
+var date = new Date();
+var nowDay = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+var arrMonths = [   'Январь', 'Февраль','Март', 'Апрель','Май', 'Июнь','Июль', 'Август',
+                    'Сентябрь', 'Октябрь','Ноябрь', 'Деабрь'
+                ];
+var months =  date.getMonth()+1;
+
+var checkDay = function(num){
+    var diff =  changeMonth();
+    var diffDate = new Date(diff.getFullYear(), diff.getMonth(), num,0,0,0);
+    return nowDay.getTime() == diffDate.getTime() ? true : false;
+};
+
+var createCalendar = function(){
+    daysOfCalendar.innerHTML = '';
+    var calendarDate = changeMonth();
+    checkDay(17);
+    var ul = document.createElement('ul'); 
+    for (let index = 1; index <= calendarDate.getDate(); index++) {
+     var li = document.createElement('li'); 
+    if(checkDay(index)){
+        li.style.background = 'red';
+    }
+     li.innerHTML = index;         
+     ul.appendChild(li);
+    }
+    daysOfCalendar.appendChild(ul);
+};
+
+var changeMonth = function(){
+    var newDate = new Date(date.getFullYear(), months, 0, 0, 0);   
+    nowMonth.innerHTML = arrMonths[newDate.getMonth()] +" " + newDate.getFullYear();
+    return newDate;
+}
+var addMonth = function(){    
+    months++;
+    changeMonth();
+    createCalendar();
+};
+var remMonth = function(){    
+    months--;
+    changeMonth();
+    createCalendar();
+};
+
+changeMonth();
+createCalendar();
+nextMonth.addEventListener('click', addMonth);
+preMonth.addEventListener('click', remMonth);
+
+
+</script>
+</body>
+</html>
