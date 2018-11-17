@@ -15,10 +15,12 @@ var ul = document.getElementById('ul');
 var date = new Date(2018, 11, 0);
 var newDate = new Date();
 for (let index = 1; index <= date.getDate(); index++) {
-     var li = document.createElement('li');   
-     li.innerHTML = index;
-     if(index == newDate.getDate()){
-         li.style.color = 'yellow';
+     var li = document.createElement('li'); 
+     var liDate = new Date(2018, 10, index); 
+     console.log(liDate.getDay()); 
+     li.innerHTML = index;     
+     if(liDate.getDay() == 6 || liDate.getDay() == 0){         
+         li.style.color = 'red';
      }
      ul.appendChild(li);
 }
