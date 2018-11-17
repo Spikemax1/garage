@@ -9,22 +9,33 @@
 <body>
     <span id="nowMonth"></span>
     <button id="nextMonth">Forward</button>
+    <button id="preMonth">Previous</button>
 <script>
 var nowMonth = document.getElementById('nowMonth');
 var nextMonth = document.getElementById('nextMonth');
+var preMonth = document.getElementById('preMonth');
 var date = new Date();
 var arrMonths = [   'Январь', 'Февраль','Март', 'Апрель','Май', 'Июнь','Июль', 'Август',
                     'Сентябрь', 'Октябрь','Ноябрь', 'Деабрь'
                 ];
 var months =  date.getMonth();
 
-var addMonth = function(){    
+var changeMonth = function(){
     var newDate = new Date(date.getFullYear(), months);   
     nowMonth.innerHTML = arrMonths[newDate.getMonth()] +" " + newDate.getFullYear();
+}
+var addMonth = function(){    
     months++;
+    changeMonth();
 };
-addMonth();
+var remMonth = function(){    
+    months--;
+    changeMonth();
+};
+
+changeMonth();
 nextMonth.addEventListener('click', addMonth);
+preMonth.addEventListener('click', remMonth);
 
 
 </script>
