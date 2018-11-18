@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position</title>
+<style>
+body{
+    height: 3000px;
+}
+#test{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    <div id="test"></div>
+    <p>
+        Координаты. X: 
+        <span id="offx"></span> 
+        Координаты. Y: 
+        <span id="offy"></span>
+    </p>
+
+    <button id="scroll">Прокрутить</button>
+<script>
+// var test = document.querySelector('#test');
+// var offx = document.querySelector('#offx');
+// var offy = document.querySelector('#offy');
+
+// test.addEventListener('mousemove', function(event){
+//     event = event || window.event;
+//     offx.innerHTML = event.offsetX;
+//     offy.innerHTML = event.offsetY;
+// });
+var scroll = document.querySelector('#scroll');
+var elem = window.scrollY;
+scroll.onclick = function(e){
+    e = e || window.e;
+    elem = window.scrollY;
+    console.log(elem);
+}
+</script>
+</body>
+
+</html>
