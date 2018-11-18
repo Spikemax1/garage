@@ -1,0 +1,175 @@
+<!DOCTYPEhtml>
+
+<htmllang="en">
+
+<head>
+    
+    <metacharset="UTF-8">
+    
+    <metaname="viewport"content="width=device-width, initial-scale=1.0">
+    
+    <metahttp-equiv="X-UA-Compatible"content="ie=edge">
+    
+    <title>Calendar</title>
+    
+    <style>
+        
+        td{
+            
+            border: 1px solid gold;
+            
+            width: 50px;
+            
+            height: 50px;
+            
+            color: red;
+            
+            font-size: 20px;
+            
+            text-align: center;
+            
+            background-color:deepskyblue;
+            
+        }
+        
+        .prevDays{
+            
+            border:1px solid bisque;
+            
+            background-color: darkgrey;
+            
+        }
+        
+    </style>
+    
+</head>
+
+<body>
+    
+    <h1id="todayMonth"></h1>
+    
+    <buttonid="buttonPrevMonth">Previous</button>
+    
+    <buttonid="buttonNextMonth">Next</button>
+    
+    <divid="main">
+    
+</div>
+
+<script>
+    
+    var arrWeek = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'суб'];
+    
+    var arrMonths = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+    
+    var main = document.getElementById('main');
+    
+    var todayMonth = document.getElementById('todayMonth');
+    
+    var buttonPrevMonth = document.getElementById('buttonPrevMonth');
+    
+    var buttonNextMonth = document.getElementById('buttonNextMonth');
+    
+    var butDate = new Date();
+    
+    var months = butDate.getMonth();
+    
+    var date = new Date(butDate.getFullYear(), months, butDate.getDate());
+    
+    var objCalendar = {};
+    
+    var createTd = function(parent, elem, dayOfWeek, className){
+        
+        var td = document.createElement('td');
+        
+        if(className){
+            
+            td.classList.add(className);
+            
+        }
+        
+        td.innerHTML = elem + '-' +dayOfWeek;
+        
+        parent.appendChild(td);
+        
+    };
+    
+    var prevMonth = function(parent, dayNum, dayOfWeek){
+        
+        for (let index = dayOfWeek, proIndex = 0; index >= 0; index--, proIndex++) {
+            
+            createTd(parent, dayNum - index, arrWeek[proIndex], 'prevDays');
+            
+        }
+        
+    };
+    
+    var nextMonth = function(parent, dayNum, dayOfWeek){
+        
+        for (let index = dayOfWeek, proIndex = 0; index < arrWeek.length; index++, proIndex++) {
+            
+            createTd(parent, dayNum + proIndex, arrWeek[index], 'prevDays');
+            
+        }
+        
+    };
+    
+    var createTable = function(date){
+        
+        main.innerHTML = '';
+        
+        var tr = document.createElement('table');
+        
+        date = new Date(butDate.getFullYear(), months, butDate.getDate());
+        
+        var todayDate = new Date(date.getFullYear(), date.getMonth()+1, 0, 0, 0, 0);
+        
+        var prevDate = new Date(date.getFullYear(), date.getMonth(), 0, 0, 0, 0);
+        
+        var nextDate = new Date(date.getFullYear(), date.getMonth()+1, 1, 0, 0, 0);
+        
+        prevMonth(tr, prevDate.getDate(), prevDate.getDay());
+        
+        for (let index = 1; index <= todayDate.getDate(); index++) {
+            
+            var thisDay = new Date(todayDate.getFullYear(), todayDate.getMonth(), index);
+            
+            createTd(tr, index, arrWeek[thisDay.getDay()]);
+            
+        }
+        
+        nextMonth(tr, nextDate.getDate(), nextDate.getDay());
+        
+        main.appendChild(tr);
+        
+        todayMonth.innerHTML = arrMonths[date.getMonth()];
+        
+    };
+    
+    createTable(date);
+    
+    var getPreDate = function(){
+        
+        months--;
+        
+        createTable(date);
+        
+    };
+    
+    var getNextDate = function(){
+        
+        months++;
+        
+        createTable();
+        
+    };
+    
+    buttonPrevMonth.addEventListener('click', getPreDate);
+    
+    buttonNextMonth.addEventListener('click', getNextDate);
+    
+</script>
+
+</body>
+
+</html>
