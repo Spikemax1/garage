@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrays</title>
+</head>
+<body>
+<script>
+var detElem = function(arr, elem){
+    var arr2 = [];
+    for (let index = 0; index < arr.length; index++) {
+        if(arr[index] == elem){            
+            continue;
+        } 
+        else{
+            arr2.push(arr[index]);
+        }        
+    }
+    return arr2;
+};
+
+var getDiff = function(arr1, arr2){
+    var newArr1 = arr1;
+    var newArr2 = arr2;
+    
+    for (let index = 0; index < arr2.length; index++) {
+        newArr1 = detElem(newArr1, arr2[index]);       
+    }
+    for (let index = 0; index < arr1.length; index++) {
+        newArr2 = detElem(newArr2, arr1[index]);       
+    }
+    for (let index = 0; index < newArr1.length; index++) {
+        newArr2.push(newArr1[index]);        
+    }
+    return newArr2;
+};
+
+var arrayRand = function(arr){
+        function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;        
+    }
+    return arr[getRndInteger(0, arr.length)];
+};
+
+var uniq = function(arr){
+    
+}
+
+var arr1 = [1,4,3,4,5,6,4, 10, 11];
+var arr2 = [4,5,6,4, 9, 401,4,3,4,5];
+console.log(arrayRand(arr2));
+</script>
+</body>
+</html>
