@@ -6,43 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>position</title>
 <style>
-body{
-    height: 3000px;
-}
-#test{
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-}
+
 </style>
 </head>
 <body>
-    <div id="test"></div>
-    <p>
-        Координаты. X: 
-        <span id="offx"></span> 
-        Координаты. Y: 
-        <span id="offy"></span>
-    </p>
+<div id="position"></div>
+<div id="pool" style="width: 500px; height: 500px; position: absolute;left: 50px; background-color: rgb(165, 181, 233);"></div>
 
-    <button id="scroll">Прокрутить</button>
+<div id="cursor" style="width: 50px; height: 50px; position: absolute; background-color: red;"></div>
+
+
 <script>
-// var test = document.querySelector('#test');
-// var offx = document.querySelector('#offx');
-// var offy = document.querySelector('#offy');
+var position = document.getElementById('position');
+var cursor = document.getElementById('cursor');
+var pool = document.getElementById('pool');
+var x = 0,y = 0, DX = 0;
+position.innerHTML = 'Позиция курсора: ' + x +'/'+y;
 
-// test.addEventListener('mousemove', function(event){
-//     event = event || window.event;
-//     offx.innerHTML = event.offsetX;
-//     offy.innerHTML = event.offsetY;
-// });
-var scroll = document.querySelector('#scroll');
-var elem = window.scrollY;
-scroll.onclick = function(e){
-    e = e || window.e;
-    elem = window.scrollY;
-    console.log(elem);
-}
+setInterval(function(){
+   position.innerHTML = 'Позиция курсора: ' + x +'/'+y; 
+   cursor.style.left = x-25 +'px';
+   cursor.style.top = y-25 +'px';
+   pool.style.left = DX + 'px';
+   DX++;
+
+}, 1000/60);
+
+pool.onmousemove = function(event){
+    x = event.pageX;
+    y = event.pageY;
+};
+
 </script>
 </body>
 
