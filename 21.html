@@ -11,7 +11,6 @@
 var detElem = function(arr, elem){
     var arr2 = [];
     for (let index = 0; index < arr.length; index++) {
-        console.log(arr[index]);
         if(arr[index] == elem){            
             continue;
         } 
@@ -21,8 +20,25 @@ var detElem = function(arr, elem){
     }
     return arr2;
 };
-var arr = [1,4,3,4,5,6,4];
-console.log(detElem(arr, 4));
+
+var getDiff = function(arr1, arr2){
+    var newArr1 = arr1;
+    var newArr2 = arr2;
+    
+    for (let index = 0; index < arr2.length; index++) {
+        newArr1 = detElem(newArr1, arr2[index]);       
+    }
+    for (let index = 0; index < arr1.length; index++) {
+        newArr2 = detElem(newArr2, arr1[index]);       
+    }
+    for (let index = 0; index < newArr1.length; index++) {
+        newArr2.push(newArr1[index]);        
+    }
+    return newArr2;
+}
+var arr1 = [1,4,3,4,5,6,4, 10, 11];
+var arr2 = [4,5,6,4, 9, 401,4,3,4,5];
+console.log(getDiff(arr1, arr2));
 </script>
 </body>
 </html>
