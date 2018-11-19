@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>z-index</title>
+<style>
+.one, .two, .three{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.one{
+    background-color: black;
+    z-index: 1;
+}
+.two{
+    background-color: rgb(240, 1, 1);
+    z-index: 1;
+}
+.three{
+    background-color: rgb(239, 255, 11);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+<div class="one" onclick="func(this)"></div>    
+<div class="two" onclick="func(this)"></div>    
+<div class="three" onclick="func(this)"></div>  
+<script>
+var one = document.querySelector('.one');
+var two = document.querySelector('.two');
+var three = document.querySelector('.three');
+var num = 0;
+
+var func = function(e){
+    console.log(e.style.zIndex);
+    e.style.zIndex = num;
+    num--;
+}
+
+two.style.zIndex = 0;
+
+</script>  
+</body>
+</html>
