@@ -45,16 +45,18 @@ var arrayRand = function(arr){
 };
 
 var uniq = function(arr){
-    var newArr = [];
+    var newArr = arr;
     for (let index = 0; index < arr.length; index++) {
         var elem = arr[index];
-               
+        newArr = detElem(newArr, elem);
     }
+    return newArr;
+    
 }
 
 var arr1 = [1,4,3,4,5,6,4, 10, 11];
 var arr2 = [4,5,6,4, 9, 401,4,3,4,5];
-console.log(arrayRand(arr2));
+console.log(uniq(arr1));
 </script>
 </body>
 </html>
