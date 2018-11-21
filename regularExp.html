@@ -7,11 +7,11 @@
     <title>regular expressions</title>
 </head>
 <body>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, temporibus sed eos qui deserunt harum, fugit explicabo rerum provident natus dolor tempore reprehenderit voluptatum aliquid et id porro incidunt laudantium!</p>
 <script>
-var str =  '12:59';
-var result = /([0-2][0-9]):([0-5][0-9])|([0-2][0-9]).([0-5][0-9])/g.test(str);
-var resultStr = str.replace(/([0-2][0-9]):([0-5][0-9])|([0-2][0-9]).([0-5][0-9])/g, '$2:$1');
-console.log(resultStr);
+var str ='Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects. These patterns are used with the exec and test methods of RegExp, and with the match, replace, search, and split methods of String. This chapter describes JavaScript regular expressions.';
+var result = str.replace(/\W*\w*(\w)\1\w*\W*/g, " ");
+console.log(result);
 </script>
 </body>
 </html>
