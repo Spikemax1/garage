@@ -8,8 +8,8 @@
 </head>
 <body>
 <script>
-var str ='aba aea aca aza axa';
-console.log(str.replace(/a[b,e,x]a/g, '!'));
+var str = 'aba aea aca aza axa a.a a+a a*a';
+console.log(str.replace(/a[b.+*]a/g, '!'));
 </script>
 </body>
 </html>
