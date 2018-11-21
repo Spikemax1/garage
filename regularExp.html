@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-var result = 'a1b2c3'.replace(/(\d+)/g, '$1$1');
+var result = /^([a-z.-_]+\.[a-z]{2,3})$/.test('my-site.com');
 console.log(result);
 </script>
 </body>
