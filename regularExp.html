@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-var result = /^([a-z.-_]+\.[a-z]{2,3})$/.test('my-site.com');
+var result = /\.[a-z]{2,3}$/g.test('http://site.ru');
 console.log(result);
 </script>
 </body>
