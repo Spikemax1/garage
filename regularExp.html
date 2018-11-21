@@ -8,10 +8,8 @@
 </head>
 <body>
 <script>
-var str = '1 2 3 4 5 6';
-var result = str.replace(/(\d)+/g, function(match){
-    return match* match;
-})
+var str = 'дылав текст ывдао текст ывда текст';
+var result = str.replace(/(т)(е)(к)(с)(т)/g, '$5$4$3$2$1');
 console.log(result);
 </script>
 </body>
