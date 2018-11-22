@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coockie</title>
+</head>
+<body>
+<script>
+// let arr = ['user1', 'user2', 'user3'];
+// localStorage.setItem('user', JSON.stringify(arr));
+
+
+// let value = localStorage.getItem('user');
+// let parsedArr = JSON.parse(value);
+// parsedArr[1] = 'user!!!';
+// localStorage.setItem('user', JSON.stringify(parsedArr));
+// console.log(localStorage.getItem('user'));
+
+let save = function(id, data){
+    localStorage.setItem(id, JSON.stringify(data));
+};
+
+let get = function(id, key){
+    let json = localStorage.getItem(id);
+    let arr = JSON.parse(json);
+    return arr[key];
+};
+
+let edit = function(id, key, newValue){
+
+}
+
+//save('user', ['user1', 'user2', 'user3']);
+console.log(get('user', 0));
+</script>
+</body>
+</html>
