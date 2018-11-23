@@ -7,6 +7,10 @@
     <title>Coockie</title>
 </head>
 <body>
+
+<textarea name="" id="text" cols="30" rows="10" onchange="edit()">
+
+</textarea>
 <script>
 // let arr = ['user1', 'user2', 'user3'];
 // localStorage.setItem('user', JSON.stringify(arr));
@@ -22,18 +26,19 @@ let save = function(id, data){
     localStorage.setItem(id, JSON.stringify(data));
 };
 
-let get = function(id, key){
-    let json = localStorage.getItem(id);
-    let arr = JSON.parse(json);
-    return arr[key];
+let get = function(input){
+    let json = localStorage.getItem(input);
+    let newText = JSON.parse(json);
+    return newText;
 };
 
-let edit = function(id, key, newValue){
-
+let edit = function(){
+    let text = document.getElementById('text');
+    save('inputText', text.value);
 }
 
-//save('user', ['user1', 'user2', 'user3']);
-console.log(get('user', 0));
+
+document.getElementById('text').value = get('inputText');
 </script>
 </body>
 </html>
