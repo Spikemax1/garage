@@ -11,6 +11,8 @@
 <textarea name="" id="text" cols="30" rows="10" onchange="edit()">
 
 </textarea>
+<button id="prev" onclick="prevFunc()">prev</button>
+<button id="next" onclick="nextFunc()">next</button>
 <script>
 // let arr = ['user1', 'user2', 'user3'];
 // localStorage.setItem('user', JSON.stringify(arr));
@@ -22,23 +24,47 @@
 // localStorage.setItem('user', JSON.stringify(parsedArr));
 // console.log(localStorage.getItem('user'));
 
+let num = 0;
+
 let save = function(id, data){
     localStorage.setItem(id, JSON.stringify(data));
 };
 
-let get = function(input){
-    let json = localStorage.getItem(input);
+let get = function(num){
+    let json = localStorage.getItem(num);
     let newText = JSON.parse(json);
     return newText;
 };
 
+let result = function(num){
+    document.getElementById('text').value = get(num);   
+};
+
 let edit = function(){
     let text = document.getElementById('text');
-    save('inputText', text.value);
-}
+    save(num, text.value);
+    num++;
+};
 
+let prevFunc = function(){
+    num--;
+    if(num <= 0){
+        num = 0;
+    }
+    result(num);
+};
 
-document.getElementById('text').value = get('inputText');
+let nextFunc = function(){
+    num++;
+    if(get(num) == undefined){
+        num--;
+    }
+    result(num);
+};
+
+result(num);
+
+console.log(localStorage.getItem(num));
 </script>
 </body>
 </html>
