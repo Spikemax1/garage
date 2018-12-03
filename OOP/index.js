@@ -1,10 +1,11 @@
-var Car = require('./car').CarClass;
-var callConsoleCar = require('./car').callConsole;
-var lego = require('./car').lego;
+var EventEmmiter = require('events').EventEmitter;
 
-var bmw = new Car('BMW');
-bmw.logName();
+var dispatcher = EventEmmiter();
 
-var mazda = new Car('mazda');
+dispatcher.on('connect', function(data){
+    console.log('Connect 1', data);
+});
 
-
+dispatcher.on('connect', function(data){
+    console.log('Connect 2', data);
+});
